@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!-- 样式表构成 -->
+		<style>
+			* {
+				margin: ;
+				padding: ;
+			}
+			body {
+				font-family: "楷体";
+				margin: 0;
+			}
+			.bg {
+				width: 100%;
+				height: 1000px;
+				background: linear-gradient(rgb(255,192,203),rgb(130,200,250));
+				position: fixed;
+				transition: opacity 5.2s;
+				opacity: 0;
+			}
+			.bg:hover {
+				opacity: 1;
+			}
+			.header {
+				opacity: .8;
+				width: 150px;
+				text-align: center;
+				margin: 0 auto;
+				margin-top: 60%;
+				padding: 25px;
+				border-radius: 80px 80px 150px 150px;
+				box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				transition: all 5.2s;
+			}
+			.bg:hover .header {
+				margin-top: 10%;
+			}
+			input {
+				opacity: 0.5;
+			}
+			.container {
+				width: 300px;
+				margin: 0 auto;
+				margin-top: 200px;
+			}
+			#demo1, #demo2, #demo3,#demo4 {
+				display: none;
+			}
+		</style>
+
+	</head>
+	<body>
+		<div class="bg">
+			<div class="header" onclick="love()">
+				<p>关于我爱你</p>
+				<p>今天也是</p>
+				<p>不遗余力想你的一天</p>
+			</div>
+			<div class="container">
+				请输入你的生日<input type="text" id="brday">
+				<hr />
+				<p id="demo1"></p>
+				<p id="demo2"></p>
+				<p id="demo3"></p>
+				<p id="demo4"></p>
+			</div>
+		</div>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			function love() {
+				let brday = $('#brday').val();
+				let arr = [];
+				brday.split("").forEach(function(item) {
+					arr.push(parseInt(item));
+				})
+				let year = arr.slice(0, 4).join("");
+				let month = arr.slice(4, 6).join("");
+				let day = arr.slice(6, 8).join("");
+				let today = Date.now();
+				let bgday = new Date(year + "," + month + "," + day).getTime();
+				let manyday = Math.round((today - bgday) / 1000 / 60 / 60 / 24);
+				$("#demo1")
+					.html('很遗憾在过去的');
+				$("#demo2")
+					.html(manyday+'天里');
+					// .html('很遗憾在过去的</br>'+manyday+'天里</br>我没有和你在一起<br/>在接下来的日子里你愿意和我一起走吗<br/>');
+				$("#demo3")
+					.html('我没有和你在一起');
+				$("#demo4")	
+					.html('在接下来的日子里你愿意和我一起走吗');
+				$("#demo1").fadeIn(4000);
+				$("#demo2").fadeIn(8000);
+				$("#demo3").fadeIn(12000);
+				$("#demo4").fadeIn(16000);
+				}
+		</script>
+	</body>
+</html>
