@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .list {
+            position: relative;
+            width: 800px;
+            height: 300px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+
+        .list .img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img1 {
+            background: green;
+        }
+
+        .img2 {
+            background: blue;
+        }
+
+        .img3 {
+            background: yellow;
+        }
+
+        .img4 {
+            background: pink;
+        }
+
+        .list>span {
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            width: 50px;
+            height: 30px;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, .5);
+        }
+
+        .list .btn-r {
+            right: 0;
+        }
+
+        .tips {
+            width: 100px;
+            height: 25px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .tips span {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, .5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="list">
+        <div class="img img1"></div>
+        <div class="img img2"></div>
+        <div class="img img3"></div>
+        <div class="img img4"></div>
+        <span class="btn-l"></span>
+        <span class="btn-r"></span>
+        <div class="tips">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        let img = $('.img');
+        let span = $('.tips span');
+        function csh(index) {
+            for(let i = 0; i < img.length; i++) {
+                img[i].style.opacity = '0';
+                span[i].style.background = 'rgba(0, 0, 0, .5)';
+            }
+            img[index].style.opacity = '1';
+            span[index].style.background = 'red';
+        }
+        csh(0);
+        let index = 1;
+        function dz() {
+            if(index == img.length) {
+                index = 0;
+            }
+            csh(index);
+            index++;
+        }
+        let self = setInterval(dz, 2500);
+        $('.btn-l').click(function() {
+            clearInterval(self);
+            if(index == 0) {
+                index = img.length;
+            }
+            index--;
+            csh(index);
+            self = setInterval(dz, 2500);
+        });
+        $('.btn-r').click(function() {
+            clearInterval(self);
+            dz();
+            self = setInterval(dz, 2500);
+        });
+        $('.list').hover(function() {
+            clearInterval(self);
+        },function() {
+            self = setInterval(dz, 2500);
+        });
+    </script>
+</body>
+
+</html>
