@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 父元素使用外边距占位 */
+        .container {
+            margin-left: 250px;
+            margin-right: 150px;
+        }
+        /* 为元素设置浮动 */
+        .container div {
+            float: left;
+            height: 200px;
+        }
+        /* 居中元素占据父元素全部宽度 */
+        .center {
+            width: 100%;
+            background: blue;
+        }
+        /* 使用负边距和相对定位将块移动到目标位置 */
+        .left {
+            width: 250px;
+            background: red;
+            margin-left: -100%;
+            position: relative;
+            right: 250px;
+        }
+        .right {
+            width: 150px;
+            background: pink;
+            margin-right: -150px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="center"></div>
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>
