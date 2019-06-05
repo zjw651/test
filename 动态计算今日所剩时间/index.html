@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .timebox {
+            width: 50%;
+            margin: 0 auto;
+            background: #f6f6f6;
+            display: block;
+            font-size: 50px;
+            line-height: 65px;
+            text-align: center;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, .5);
+            color: #bad7df;
+            text-shadow: 0 3px 3px rgba(0, 0, 0, .3);
+
+        }
+        span {
+            height: 100px;
+            width: 30%;
+            font-size: 70px;
+            color: #ffe2e2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="timebox">
+        <p>距离今天结束</p>
+        <span class="hour"></span>时
+        <span class="minute"></span>分
+        <span class="sec"></span>秒
+    </div>
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        // 在DOM加载后会直接运行函数，避免出现时间没有立即出现的问题
+        $(function() {
+            countTime();
+        })
+        function countTime() {
+            $('.hour').text(Math.abs(new Date().getHours() - 23));
+            $('.minute').text(Math.abs(new Date().getMinutes() - 59));
+            $('.sec').text(Math.abs(new Date().getSeconds() - 60));
+        }
+        var autotime = setInterval(countTime, 1000);
+    </script>
+</body>
+
+</html>
